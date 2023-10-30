@@ -15,6 +15,10 @@ skillList = []
 
 skillInput = input()
 
+# ถ้าเกิดมี R เข้ามา จะต้องมี s ตาม
+
 for i in skillInput :
     skillList.append(i)
+    if i == 'R' :
+        break
 print(skillList)
