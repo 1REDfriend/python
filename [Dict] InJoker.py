@@ -20,5 +20,8 @@ skillInput = input()
 for i in skillInput :
     skillList.append(i)
     if i == 'R' :
+        skillList.pop()
+        for i in range(len(skillList)) :
+            
         break
-print(skillList)
+
