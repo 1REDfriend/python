@@ -1,3 +1,4 @@
+
 lastList = [100.00,0.00]
 sensitive = 0
 prenum = 0
