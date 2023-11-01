@@ -1,26 +1,29 @@
-minimum = 50.00
-maximum = 100.00
-
+lastList = [100.00,0.00]
+sensitive = 0
+prenum = 0
 counter = 0
-lastword = ''
-print('%.2f' % maximum + "?")
+print('%.2f' % lastList[0] + "?")
 while 1 :
     word = input()
-    counter += 1
+    if (lastList[0] < lastList[1]) :
+        prenum = lastList[0]
+    else :
+        prenum = lastList[1]
 
     if (word != "D") :
         if (word == "F") :
-            maximum -= minimum
-            lastword = 'F'
-            minimum /= 2
+            sensitive = ((lastList[0] - lastList[1]) / 2) + prenum
         elif (word == "S") :
-            minimum *= 2
-            maximum += minimum
-            lastword = 'S'
-        print('%.2f' % maximum + "?")
+            if counter > 0 :
+                sensitive = ((lastList[0] - lastList[1]) / 2) + prenum
+            else :
+                sensitive = ((lastList[0] - lastList[1]) * 2) + prenum
+        print('%.2f' % sensitive + "?")
     else :
         break
-    if (lastword == word) :
-        minimum /= 2
+    # print(lastList)
+    lastList.insert(0 , sensitive)
+    lastList.pop()
 
-print('Your sensitivity is ' + '%.2f' % maximum + ".")
+
+print('Your sensitivity is ' + '%.2f' % sensitive + ".")
