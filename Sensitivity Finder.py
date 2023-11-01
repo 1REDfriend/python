@@ -1,23 +1,30 @@
-lastValue = 0
-currrentValue = 100.00
-sensitive = 100.00
 
-print(f'{currrentValue:.2f}?')
-
-while True :
+lastList = [100.00,0.00]
+sensitive = 0
+prenum = 0
+counter = 0
+print('%.2f' % lastList[0] + "?")
+while 1 :
     word = input()
-    
-    if (sensitive - lastValue < 0) :
-        currrentValue = lastValue - sensitive
+    if (lastList[0] < lastList[1]) :
+        prenum = lastList[0]
     else :
-        currrentValue = sensitive - lastValue
+        prenum = lastList[1]
 
-    if (word == "S") :
-        sensitive = (currrentValue * 2) + lastValue
-    elif (word == 'F') :
-        sensitive = (currrentValue / 2) + lastValue
-    elif (word == "D") :
+    if (word != "D") :
+        if (word == "F") :
+            sensitive = ((lastList[0] - lastList[1]) / 2) + prenum
+        elif (word == "S") :
+            if counter > 0 :
+                sensitive = ((lastList[0] - lastList[1]) / 2) + prenum
+            else :
+                sensitive = ((lastList[0] - lastList[1]) * 2) + prenum
+        print('%.2f' % sensitive + "?")
+    else :
         break
-    lastValue = currrentValue
+    # print(lastList)
+    lastList.insert(0 , sensitive)
+    lastList.pop()
 
-    print(F'{sensitive:.2f}?')
+
+print('Your sensitivity is ' + '%.2f' % sensitive + ".")

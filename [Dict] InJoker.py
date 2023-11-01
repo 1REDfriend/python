@@ -22,6 +22,8 @@ for i in skillInput :
     if i == 'R' :
         skillList.pop()
         for i in range(len(skillList)) :
-            
+            preList = skillList[len(skillList) - 1]
+            skillList.pop()
+            skillList.swap()
         break
 
