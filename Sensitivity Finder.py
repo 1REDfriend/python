@@ -1,30 +1,20 @@
+sensitive = 100.00
+minValue, maxValue = 0, float('inf')
 
-lastList = [100.00,0.00]
-sensitive = 0
-prenum = 0
-counter = 0
-print('%.2f' % lastList[0] + "?")
-while 1 :
-    word = input()
-    if (lastList[0] < lastList[1]) :
-        prenum = lastList[0]
-    else :
-        prenum = lastList[1]
+while True:
+    print(f'{sensitive:.2f}?')
+    sensitivity_feel = input()
 
-    if (word != "D") :
-        if (word == "F") :
-            sensitive = ((lastList[0] - lastList[1]) / 2) + prenum
-        elif (word == "S") :
-            if counter > 0 :
-                sensitive = ((lastList[0] - lastList[1]) / 2) + prenum
-            else :
-                sensitive = ((lastList[0] - lastList[1]) * 2) + prenum
-        print('%.2f' % sensitive + "?")
-    else :
+    if sensitivity_feel == 'F':
+        maxValue = min(maxValue, sensitive)
+    elif sensitivity_feel == 'S':
+        minValue = max(minValue, sensitive)
+    elif sensitivity_feel == 'D':
         break
-    # print(lastList)
-    lastList.insert(0 , sensitive)
-    lastList.pop()
 
+    if maxValue == float('inf'):
+        sensitive *= 2
+    else:
+        sensitive = (minValue + maxValue) / 2
 
-print('Your sensitivity is ' + '%.2f' % sensitive + ".")
+print(f'Your sensitivity is {sensitive:.2f}.')
