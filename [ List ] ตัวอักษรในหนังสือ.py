@@ -3,12 +3,15 @@ namelist = []
 while 1 :
     count = 0
     text = input()
-    for i in text :
-        count += 1
-    namelist += [(count , text)]
-    if (text == "END") :
+    
+    if (text.lower() == "end") :
         break
+    else :
+        for i in text :
+            count += 1
+        namelist += [(count , text)]
 
 namelist = sorted(namelist, key=lambda x:x[0])
 
-print(namelist)
+for i in namelist :
+    print(i[1])
