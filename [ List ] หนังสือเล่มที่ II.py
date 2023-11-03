@@ -1,26 +1,21 @@
-books = []
 shelv = []
-couter = 1
 
-while True:
-    bookcode = input()
-    if bookcode.lower() == "end":
+while 1 :
+    book = input()
+    if book.lower() == 'end' :
         break
     else :
-        books.append(bookcode)
+        Found = False
+        for i in shelv :
+            if i[0] == book :
+                i[1] += 1
+                Found = True
+        if not Found :
+            shelv.append([book , 1])
+finalshelv = []
+for i,v in enumerate(shelv) :
+    finalshelv.append([v[0],i+1,v[1]])
 
-
-for i,v in enumerate(books) :
-    # จะหาว่ามีหนังสืออยู่ใน shelv หรือป่าว ถ้าไม่ให้เพิ่ม books, i , 1
-    # แต่ถ้ามี ให้ บวก จำนวนเพิ่ม
-    if i == 0 :
-        shelv.append((v , i+1 , 1))
-    else :
-        try:
-            if (v in shelv) :
-                print(v)
-        except ValueError :
-            shelv.append((v , i , 1))
-
-for i in shelv :
-    print(i[0],i[1],i[2])
+finalshelv.sort(key=lambda x: x[0])
+for i in finalshelv :
+    print(f"{i[0]} {i[1]} {i[2]}")
