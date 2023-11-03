@@ -12,7 +12,7 @@ for i in text:
     if not Found:
         tower[i] = 1
 
-tower = dict(sorted(tower.items(), key=lambda item: item[1], reverse=True))
+tower = dict(sorted(tower.items(), key=lambda item: (-item[1] , item[0].lower())))
 print("_________")
 for i,v in tower.items() :
     print(f'|{i} <-> {v}|')

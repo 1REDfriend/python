@@ -21,9 +21,8 @@ for i in skillInput :
     skillList.append(i)
     if i == 'R' :
         skillList.pop()
-        for i in range(len(skillList)) :
-            preList = skillList[len(skillList) - 1]
-            skillList.pop()
-            skillList.swap()
         break
 
+for code in skillInput :
+    for i,v in skillMarble.items() :
+        
