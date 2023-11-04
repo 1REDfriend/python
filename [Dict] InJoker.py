@@ -19,10 +19,22 @@ skillInput = input()
 
 for i in skillInput :
     skillList.append(i)
-    if i == 'R' :
+    if i == 'RS' :
         skillList.pop()
         break
-
-for code in skillInput :
-    for i,v in skillMarble.items() :
-        
+combolist = []
+# ตรวจสอบ input ทุก 3 ตัวและแสดงผลลัพธ์
+for i in range(len(skillList) - 2):
+    skill_combo = skillList[i:i+3]
+    combo_str = ''.join(skill_combo)
+    if combo_str in skillMarble:
+        combolist.append(skillMarble[combo_str])
+combolist = sorted(combolist , reverse=True)
+if combolist :
+    for i in range(len(combolist)) :
+        if i >= len(combolist) - 1 :
+            print(combolist[i])
+        else :
+            print(combolist[i] , end=', ')
+else :
+    print("EZ MID")
