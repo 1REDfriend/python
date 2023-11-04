@@ -30,7 +30,7 @@ if (totalHmValue + freeHmValue < buy) :
                 print(f'{finalBuy * hmPrice} บาท')
             else :
                 finalBuy = sumTotalHM
-                print(f'{finalBuy} ชิ้น')
+                print(f'{finalBuy + sumTotalFreeHM} ชิ้น')
                 print(f'{finalBuy * hmPrice} บาท')
     else :
         if (((buy//freeHmValue)*freeHmValue) < buy) :
