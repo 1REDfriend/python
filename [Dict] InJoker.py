@@ -30,6 +30,7 @@ for i in range(len(skillList) - 2):
     if combo_str in skillMarble:
         combolist.append(skillMarble[combo_str])
 combolist = sorted(combolist , reverse=True)
+
 if combolist :
     for i in range(len(combolist)) :
         if i >= len(combolist) - 1 :
