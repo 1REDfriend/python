@@ -23,7 +23,7 @@ if (totalHmValue + freeHmValue < buy) :
         else :
             finalBuy = buy//(totalHmValue + freeHmValue)
             sumTotalHM = finalBuy * totalHmValue
-            sumTotalFreeHM = finalBuy * finalBuy
+            sumTotalFreeHM = finalBuy * freeHmValue
             if ((sumTotalHM + sumTotalFreeHM) < buy) :
                 finalBuy = sumTotalHM + (buy - (sumTotalHM + sumTotalFreeHM)) # จะได้จน.ชิ้นที่ต้องชื้อมา
                 print(f'{finalBuy + sumTotalFreeHM} ชิ้น')
