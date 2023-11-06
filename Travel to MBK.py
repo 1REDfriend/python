@@ -5,21 +5,28 @@ travellist = {
     8 : "Song Thaeo"
 }
 
-money = int(input())
+money = input()
+try :
+    if money.isdigit() :
+        money = int(money)
+except ValueError :
+    money = int(money)
 traveloga = []
 
 for i,v in travellist.items() :
     if i <= money :
         money = money - i
         traveloga.append(v)
-        print(money)
+        # print(money)
 
-print(traveloga)
+# print(traveloga)
 if not traveloga :
-    print("No money to travel")
+    print("stay home")
 else :
     for i in traveloga :
-        if i == "Song Thaeo" :
-            print(f'{i}\nWalking')
-        elif i == "BTS" :
-            print(f'{i}\nNo Walk way')
+        if i == "Song Thaeo" or i == "BTS":
+            print(f'{i}\nwalking')
+            break
+        else :
+            print(f'{i}\nno walking')
+            break
