@@ -1,44 +1,47 @@
-while True:
-    # รับข้อมูลจากผู้ใช้
-    user_input = input()
-    
-    # ถ้าผู้ใช้ป้อน "0" ให้ออกจากลูป
-    if user_input == '0':
-        break
-    
-    # แปลงข้อมูลที่รับเข้ามาให้อยู่ในรูปสตริง
-    num_str = str(user_input)
-    
-    # ตรวจสอบความยาวของตัวเลข
-    if len(num_str) == 4:
-        # กรณีตัวเลขสี่หลัก
-        if len(set(num_str)) < 4:
-            print("Valid")
-        else:
-            print("Invalid")
-    elif len(num_str) == 6:
-        # กรณีตัวเลขหกหลัก
-        is_valid = False
-        for i in range(4, len(num_str)):
-            if num_str[i] == num_str[i-4]:
-                if num_str.count(num_str[i]) == 2 or num_str.count(num_str[i]) == 3:
-                    is_valid = True
-                    break
-        if is_valid:
-            print("Valid")
-        else:
-            print("Invalid")
+from collections import Counter
+while 1 :
+    otpcode = input()
 
-    elif len(num_str) == 8:
-        # กรณีตัวเลขแปดหลัก
-        is_valid = False
-        for i in range(6, len(num_str)):
-            if num_str[i] == num_str[i-2] and num_str.count(num_str[i]) == 3:
-                is_valid = True
-                break
-        if is_valid:
-            print("Valid")
-        else:
+    prelist = []
+    otpCounter = {}
+    if otpcode == "0" :
+        break
+
+    for i in otpcode :
+        prelist.append(i)
+    if len(otpcode) == 4 :
+        otpCounter = Counter(prelist)
+        Found = False
+        for i,v in otpCounter.items() :
+            if v >= 2 :
+                print("Valid")
+                Found = True
+        if not Found :
             print("Invalid")
-    else:
-        print("Invalid")
+    elif len(otpcode) == 6 :
+        otpCounter = Counter(prelist)
+        found = False
+        counter = 0
+        for i,v in otpCounter.items() :
+            if v == 3 :
+                found = True
+            elif v == 2 :
+                counter += 1
+        if counter >= 2 or found :
+            print("Valid")
+        else :
+            print("Invalid")
+    elif len(otpcode) == 8 :
+        otpCounter = Counter(prelist)
+        found = False
+        counter = 0
+        counter2 = 0
+        for i,v in otpCounter.items() :
+            if v == 2 :
+                counter2 += 1
+            elif v == 3 :
+                counter += 1
+        if counter >= 2 or counter2 >= 3 :
+            print("Valid")
+        else :
+            print("Invalid")
