@@ -1,55 +1,26 @@
-from collections import Counter
-while 1 :
-    otpcode = input()
 
-    prelist = []
-    otpCounter = {}
-    otpCounter2 = []
-    if otpcode == "0" :
+while 1 :
+    otp = input()
+    if otp == "0" :
         break
 
-    for i in otpcode :
-        prelist.append(i)
-    if len(otpcode) == 4 :
-        otpCounter = Counter(prelist)
-        Found = False
-        for i,v in otpCounter.items() :
-            if v >= 2 :
-                print("Valid")
-                Found = True
-        if not Found :
-            print("Invalid")
-    elif len(otpcode) == 6 :
-        found = False
-        for i in otpcode :
-            count = otpcode.count(i)
-            otpCounter2.append(count)
-        for i in otpCounter2 :
-            if i == 2 :
-                if otpCounter2.count(i) == 4 :
-                    found = True
-            elif i == 3 :
-                found = True
+    counter = [
+        otp.count(str(code) for code in range(8))
+    ]
 
-        if found :
-            print("Valid")
-        else :
-            print("Invalid")
+    if len(otp) == 4  and counter.count(2) is 1:
+        print("Valid")
 
-    elif len(otpcode) == 8 :
-        found = False
-        for i in otpcode :
-            count = otpcode.count(i)
-            otpCounter2.append(count)
-        
-        for i in otpCounter2 :
-            if i == 3 :
-                if otpCounter2.count(i) == 2 :
-                    found = True
-            elif i == 2 :
-                if otpCounter2.count(i) == 3 :
-                    found = True
-        if found :
-            print("Valid")
-        else :
-            print("Invalid")
+    elif len(otp) == 6 and counter.count(2) is 2 or counter.count(3) is 1 :
+        print("Valid")
+
+    elif len(otp) == 8 and counter.count(2) is 4 or counter.count(3) is 2 :
+        print("Valid")
+
+    else :
+        print("Invalid")
+
+# OTP ที่มี 4 หลัก จะต้องมีเลขซ้ำกัน 1 ตัว, 2 หลักเท่านั้น (1120, 0850, 4543)
+# OTP ที่มี 6 หลัก จะต้องมีเลขซ้ำกัน 2 ตัว, 4 หลัก หรือ 1 ตัว 3 หลัก อีกสามหลักจะเป็นอะไรก็ได้ (151567, 997882, 321324, 115167, 987666)
+# OTP ที่มี 8 หลัก จะต้องมีเลขซ้ำกัน 3 ตัว, 6 หลัก หรือ 2 ตัว 6 หลัก อีกสองหลักจะเป็นอะไรก็ได้ (11223345, 68682400, 84886044)
+# โปรแกรมของคุณจะต้องรับ OTP มาเรื่อยๆ จนกว่าจะได้รับเลข 0 เข้ามา คือให้หยุดการรับข้อมูล
