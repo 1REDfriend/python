@@ -1,0 +1,22 @@
+.light-mode-text {
+    color: black;
+}
+
+.light-mode-body {
+    background-color: rgb(255, 240, 228);
+}
+
+.light-mode-card {
+    background-color: azure;
+    color: black;
+}
+
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 700ms;
+}
+
+h1:hover {
+    color: chocolate;
+}
+
