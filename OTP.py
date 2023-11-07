@@ -4,6 +4,7 @@ while 1 :
 
     prelist = []
     otpCounter = {}
+    otpCounter2 = []
     if otpcode == "0" :
         break
 
@@ -19,29 +20,36 @@ while 1 :
         if not Found :
             print("Invalid")
     elif len(otpcode) == 6 :
-        otpCounter = Counter(prelist)
         found = False
-        counter = 0
-        for i,v in otpCounter.items() :
-            if v == 3 :
+        for i in otpcode :
+            count = otpcode.count(i)
+            otpCounter2.append(count)
+        for i in otpCounter2 :
+            if i == 2 :
+                if otpCounter2.count(i) == 4 :
+                    found = True
+            elif i == 3 :
                 found = True
-            elif v == 2 :
-                counter += 1
-        if counter >= 2 or found :
+
+        if found :
             print("Valid")
         else :
             print("Invalid")
+
     elif len(otpcode) == 8 :
-        otpCounter = Counter(prelist)
         found = False
-        counter = 0
-        counter2 = 0
-        for i,v in otpCounter.items() :
-            if v == 2 :
-                counter2 += 1
-            elif v == 3 :
-                counter += 1
-        if counter >= 2 or counter2 >= 3 :
+        for i in otpcode :
+            count = otpcode.count(i)
+            otpCounter2.append(count)
+        
+        for i in otpCounter2 :
+            if i == 3 :
+                if otpCounter2.count(i) == 2 :
+                    found = True
+            elif i == 2 :
+                if otpCounter2.count(i) == 3 :
+                    found = True
+        if found :
             print("Valid")
         else :
             print("Invalid")
