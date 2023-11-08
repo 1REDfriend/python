@@ -10,4 +10,6 @@ BTS = {
 if station1 == "N6" or station2 == "N6" :
     print("Error")
 else :
-    
+    for i,v in BTS:
+        for n in v :
+            if n == station1 or 
