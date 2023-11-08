@@ -11,3 +11,4 @@ if station1 == "N6" or station2 == "N6" :
     print("Error")
 else :
     
+    
