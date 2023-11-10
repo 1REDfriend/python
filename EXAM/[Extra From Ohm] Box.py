@@ -8,11 +8,14 @@ startdict = {
 
 for i in range(boxY) :
     found = False
+    i+=1
     for x,n in startdict.items() :
+        x+=1
+        print(x,i)
         if x is i :
             found = True
-            startdict.update(x,(n,"*"))
+            startdict[i] += "*"
     if not found :
-        startdict.fromkeys(i,"*")
+        startdict[i] = list("*")
 
 print(startdict)

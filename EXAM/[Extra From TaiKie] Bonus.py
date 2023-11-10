@@ -14,10 +14,13 @@ if (month >= 10) :
         print("5000")
     elif (bonus <= 1000000 and bonus <=  moneypaypermont * 20) :
         print(bonus)
-    elif (bonus > 1000000) :
+    elif bonus >= moneypaypermont * 20 :
+        if bonus > 1000000 :
+            print("1000000")
+        else :
+            print(moneypaypermont * 20)
+    elif (bonus >= 1000000) :
         print("1000000")
-    elif bonus > moneypaypermont * 20 :
-        print(moneypaypermont * 20)
 
 else :
     bonus = moneypaypermont * yearwork
@@ -25,7 +28,10 @@ else :
         print("5000")
     elif (bonus <= 1000000 and bonus <= moneypaypermont * 20) :
         print(bonus)
-    elif (bonus > 1000000) :
+    elif (bonus >= moneypaypermont * 20 ):
+        if bonus > 1000000 :
+            print("1000000")
+        else :
+            print(moneypaypermont * 20)
+    elif (bonus >= 1000000) :
         print("1000000")
-    elif (bonus > moneypaypermont * 20 ):
-        print(moneypaypermont * 20)
